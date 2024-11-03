@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 
 import Blog from '../../components/blog/blog';
-import { blogData } from '../../constants';
+import useBlogs from '../../hooks/useBlogs';
 import { ProfileContainer, ProfileInfo } from './styles';
 
 const Profile = () => {
+    const { blogs } = useBlogs();
     return (
         <ProfileContainer>
             <ProfileInfo>
@@ -25,7 +26,7 @@ const Profile = () => {
             </ProfileInfo>
             <div className="list-wrapper">
                 <h2>My Posts</h2>
-                {blogData.map((blog) => (
+                {blogs.map((blog) => (
                     <Link key={blog.id} to={`/blog/${blog.id}`}>
                         <Blog blog={blog} />
                     </Link>
