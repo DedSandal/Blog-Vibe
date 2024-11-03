@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom';
 
-import { blogData } from '../../constants';
+import useBlogs from '../../hooks/useBlogs';
 import { BlogPageContainer } from './styles';
 
 const BlogPage = () => {
     const { id } = useParams();
-    const blog = blogData.find((item) => item.id === Number(id));
+    const { blogs } = useBlogs();
+    const blog = blogs.find((item) => item.id === Number(id));
 
     return (
         <BlogPageContainer>

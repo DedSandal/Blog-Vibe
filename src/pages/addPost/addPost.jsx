@@ -3,33 +3,34 @@ import React, { useState } from 'react';
 
 import Button from '../../components/button/button';
 import Input from '../../components/input/input';
-import { fileEditorConfig } from '../../constants';
+import { blogsData, fileEditorConfig } from '../../constants';
 import { AddPostContainer } from './styles';
 
 const AddPost = () => {
+    // State hooks to manage input data
     const [imageUrl, setImageUrl] = useState('');
     const [formState, setFormState] = useState({ title: '', content: '' });
 
-    const handleImageUrlChange = (event) => {
-        setImageUrl(event.target.value);
-    };
+    // Handle input changes
+    const handleImageUrlChange = (event) => setImageUrl(event.target.value);
+    const handleTitleChange = (event) => setFormState({ ...formState, title: event.target.value });
+    const handleEditorChange = (content) => setFormState({ ...formState, content });
 
-    const handleTitleChange = (event) => {
-        setFormState((prevState) => ({ ...prevState, title: event.target.value }));
-    };
-
-    const handleEditorChange = (content) => {
-        setFormState((prevState) => ({ ...prevState, content }));
-    };
-
+    // Save data to localStorage
     const handleSave = () => {
         const postData = {
-            imageUrl,
+            id: Date.now(),
+            img: imageUrl,
             title: formState.title,
             content: formState.content,
         };
-        console.log('Saved data:', postData);
 
+        // Save post data to localStorage
+        const savedPosts = JSON.parse(localStorage.getItem('blogs')) || blogsData;
+        savedPosts.push(postData);
+        localStorage.setItem('blogs', JSON.stringify(savedPosts));
+
+        // Clear input fields
         setImageUrl('');
         setFormState({ title: '', content: '' });
     };
@@ -39,20 +40,8 @@ const AddPost = () => {
             <h4>Add Post</h4>
             <div className="form-wrapper">
                 <div className="inputs-wrapper">
-                    <Input
-                        type="text"
-                        placeholder="Image url"
-                        name="imageUrl"
-                        value={imageUrl}
-                        onChange={handleImageUrlChange}
-                    />
-                    <Input
-                        type="text"
-                        placeholder="Title"
-                        name="title"
-                        value={formState.title}
-                        onChange={handleTitleChange}
-                    />
+                    <Input type="text" placeholder="Image url" value={imageUrl} onChange={handleImageUrlChange} />
+                    <Input type="text" placeholder="Title" value={formState.title} onChange={handleTitleChange} />
                 </div>
                 <div className="background-img">{imageUrl && <img src={imageUrl} alt="User provided" />}</div>
                 <div className="editor-wrapper">

@@ -1,4 +1,4 @@
-export const blogData = [
+export const blogsData = [
     {
         id: 1,
         img: 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/04/23/12/william-shakespeare.jpg',
