@@ -10,7 +10,7 @@ const Banner = () => {
                 <h2>Step-by-step guide to choosing great font pairs</h2>
                 <div>
                     <span>
-                        By <span className="author-name">James West </span>
+                        By <span className="author-name">James West</span>
                     </span>
                     |<span> May 23, 2022 </span>
                 </div>

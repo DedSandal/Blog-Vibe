@@ -18,8 +18,6 @@ const config = {
                             modules: {
                                 mode: 'local',
                                 localIdentName: '[name]__[local]',
-                                // namedExport: true, case 1;
-                                namedExport: false,
                             },
                         },
                     },
@@ -31,7 +29,7 @@ const config = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/preset-env', '@babel/preset-react'],
+                            presets: ['@babel/preset-env', ['@babel/preset-react', { runtime: 'automatic' }]],
                             plugins: ['istanbul'],
                         },
                     },
