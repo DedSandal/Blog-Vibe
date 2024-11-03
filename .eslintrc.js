@@ -15,13 +15,14 @@ const config = {
         /*https://www.npmjs.com/package/eslint-plugin-import*/
         'plugin:import/errors',
         'plugin:import/warnings',
-        /*https://www.npmjs.com/package/eslint-plugin-unicorn*/
-        'plugin:unicorn/recommended',
         /*https://www.npmjs.com/package/eslint-plugin-cypress*/
         'plugin:cypress/recommended',
     ],
     /* https://github.com/import-js/eslint-plugin-import */
     settings: {
+        react: {
+            version: 'detect',
+        },
         'import/resolver': {
             node: {
                 extensions: ['.js', '.jsx'],
@@ -33,31 +34,21 @@ const config = {
         },
     },
     plugins: ['simple-import-sort', 'react'],
-    ignorePatterns: ['node_modules'],
+    ignorePatterns: ['node_modules', 'config'],
     rules: {
-        'unicorn/filename-case': [
-            'error',
-            {
-                cases: {
-                    camelCase: true,
-                    pascalCase: true,
-                },
-            },
-        ],
-        'unicorn/no-empty-file': 'off',
         'simple-import-sort/exports': 'error',
         'simple-import-sort/imports': 'error',
+        'import/no-named-as-default': 'off',
         'import/namespace': [2, { allowComputed: true }],
         'import/first': 'error',
         'import/newline-after-import': 'error',
+        'react/react-in-jsx-scope': 'off',
+        'react/prop-types': 'off',
     },
     overrides: [
         {
             files: ['*rc.js', '*.config.js'],
-            rules: {
-                'unicorn/prefer-module': 'off',
-                'unicorn/filename-case': 'off',
-            },
+            rules: {},
         },
     ],
     globals: {
