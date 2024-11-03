@@ -1,8 +1,8 @@
 import { ButtonContainer } from './styles';
 
-const Button = ({ children, onClick }) => {
+const Button = ({ children, onClick, ...props }) => {
     return (
-        <ButtonContainer onClick={onClick} data-cy={`button`}>
+        <ButtonContainer onClick={onClick} {...props}>
             {children}
         </ButtonContainer>
     );

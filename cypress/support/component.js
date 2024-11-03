@@ -33,7 +33,6 @@ Cypress.Commands.add('mountWithProviders', (component, { route = '/' } = {}) => 
     return mount(wrapped);
 });
 
-Cypress.Commands.add('getByDataCy', (selector) => cy.get(`[data-cy=${selector}]`));
 // Cypress.Commands.add('myCustomMount', mount);
 
 // Example use:

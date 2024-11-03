@@ -15,7 +15,7 @@ const Home = () => {
                 <h2 className="home-title">All posts</h2>
                 <div className="list-wrapper">
                     {blogs.map((blog) => (
-                        <Link key={blog.id} to={`/blog/${blog.id}`}>
+                        <Link data-cy="post-item" key={blog.id} to={`/blog/${blog.id}`}>
                             <Blog blog={blog} />
                         </Link>
                     ))}

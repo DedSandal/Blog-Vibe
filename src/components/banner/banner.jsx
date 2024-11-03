@@ -7,7 +7,7 @@ const Banner = () => {
                 <p>
                     Posted on <b>startup</b>
                 </p>
-                <h2>Step-by-step guide to choosing great font pairs</h2>
+                <h2 data-cy="home-title">Step-by-step guide to choosing great font pairs</h2>
                 <div>
                     <span>
                         By <span className="author-name">James West</span>
