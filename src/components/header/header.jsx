@@ -14,13 +14,13 @@ const Header = () => {
             </Link>
             {isAuth ? (
                 <div className="logout-wrapper">
-                    <Link to={`/create-post`}>
+                    <Link data-cy="create-post" to={`/create-post`}>
                         <button className="add-post">Add Post</button>
                     </Link>
                     <Button onClick={signOut}>Logout</Button>
                 </div>
             ) : (
-                <Link className="button-link" to={`/sign-in`}>
+                <Link data-cy="login" lassName="button-link" to={`/sign-in`}>
                     <Button>Login</Button>
                 </Link>
             )}

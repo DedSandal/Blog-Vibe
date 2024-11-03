@@ -28,21 +28,31 @@ const SignUp = () => {
     return (
         <FormContainer>
             <h3>Create Account</h3>
-            <Input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
             <Input
+                data-cy="username"
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+                data-cy="password"
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
             <Input
+                data-cy="confirm-password"
                 type="password"
                 placeholder="Confirm Password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <Link to={`/sign-in`}>Already have an account</Link>
-            <Button onClick={handleSubmit}>Sign Up</Button>
+            <Button data-cy="submit" onClick={handleSubmit}>
+                Sign Up
+            </Button>
         </FormContainer>
     );
 };

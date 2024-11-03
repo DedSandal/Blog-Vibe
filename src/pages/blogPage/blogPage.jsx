@@ -12,7 +12,7 @@ const BlogPage = () => {
         <BlogPageContainer>
             <div>
                 <h3>{blog.author}</h3>
-                <h4>{blog.title}</h4>
+                <h4 data-cy="post-title">{blog.title}</h4>
             </div>
             <img src={blog.img} alt="" />
             <div>

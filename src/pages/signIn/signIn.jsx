@@ -31,7 +31,9 @@ const SignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <Link to={`/sign-up`}>Don&#39;t have an account?</Link>
+            <Link data-cy="sign-up-link" to={`/sign-up`}>
+                Don&#39;t have an account?
+            </Link>
             <Button onClick={handleSubmit}>Sign In</Button>
         </FormContainer>
     );
