@@ -8,6 +8,7 @@ import Home from './pages/home/home';
 import Profile from './pages/profile/profile';
 import SignIn from './pages/signIn/signIn';
 import SignUp from './pages/signUp/signUp';
+import { AuthProvider } from './providers/authProvider';
 
 const App = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,17 +17,19 @@ const App = () => {
     const logOut = () => setIsAuthenticated(false);
 
     return (
-        <BrowserRouter>
-            <Header isAuthenticated={isAuthenticated} logOut={logOut} />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/blog/:id" element={<BlogPage />} />
-                <Route path="/create-post" element={<AddPost />} />
-                <Route path="/sign-in" element={<SignIn logIn={logIn} />} />
-                <Route path="/sign-Up" element={<SignUp />} />
-            </Routes>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <Header isAuthenticated={isAuthenticated} logOut={logOut} />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/blog/:id" element={<BlogPage />} />
+                    <Route path="/create-post" element={<AddPost />} />
+                    <Route path="/sign-in" element={<SignIn logIn={logIn} />} />
+                    <Route path="/sign-Up" element={<SignUp />} />
+                </Routes>
+            </BrowserRouter>
+        </AuthProvider>
     );
 };
 export default App;
